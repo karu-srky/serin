@@ -8,13 +8,41 @@ const Header = () => {
 
     const [state, setState] = useState(false);
 
+    //引数をopen,closeのstringに変更する
     const toggleDrawer = (toggleState: boolean) => {
         setState(toggleState)
     }
 
-    const contentsTitle = {
-        
-    }
+    //データをまとめたjsonファイルを作成する
+    const contentsTitle = [
+        {    
+            "title": "TOP",
+            "key": "top"
+        },
+        {
+            "title": "COMPANY",
+            "key": "company"
+        },
+        {
+            "title": "BUSINESS",
+            "key": "business"
+        },
+        {
+            "title": "CONTACT",
+            "key": "contact"
+        },
+        {
+            "title": "RECRUIT",
+            "key": "recruit"
+        }
+    ]
+
+    const listItems = contentsTitle.map((content) =>
+        <DrawerContents
+            title={content.title}
+            key={content.key}
+        />
+    )
 
     return(
         <>
@@ -26,7 +54,7 @@ const Header = () => {
                     open={state}
                     onClose={() => toggleDrawer(false)}
                 >
-                    <DrawerContents />
+                    {listItems}
                 </Drawer>
             </div>
         </>
