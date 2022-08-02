@@ -2,10 +2,10 @@ import React from "react";
 import { IconButton } from "@mui/material";
 import { DensityMediumRounded } from "@mui/icons-material"
 
-const Humburger = () => {
+const Humburger = (props: any) => {
     return(
         <>
-            <IconButton>
+            <IconButton onClick={() => props.onClick(false)}>
                 <DensityMediumRounded />
             </IconButton>
         </>
