@@ -1,11 +1,20 @@
-import { useState } from "react";
+import React from "react";
 import { ListItemButton, ListItemText } from "@mui/material"
 
 const DrawerContents = (props: any) => {
+    
+    const clickListItem = () => {
+        props.selectBody(props.flag)
+        props.drawerClose()
+    }
+
     return(
         <>
             <div style={styles.listItem}>
-                <ListItemButton component="a" onClick={() => props.selectBody(props.flag)}>
+                <ListItemButton
+                    component="a" 
+                    onClick={clickListItem}
+                >
                     <ListItemText primary={props.title} />
                 </ListItemButton>
             </div>

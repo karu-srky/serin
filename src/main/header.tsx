@@ -19,6 +19,7 @@ const Header = (props: any) => {
             title={content.title}
             flag={content.flag}
             selectBody={props.selectBody}
+            drawerClose={() => toggleDrawer(false)}
         />
     )
 
@@ -34,7 +35,7 @@ const Header = (props: any) => {
                 >
                     {listItems}
                     <div style={styles.listItem}>
-                        <ListItemButton component="a" href="">
+                        <ListItemButton component="a" onClick={() => window.open("https://github.com/karu-srky/serin")}>
                             <ListItemText primary="GIT" />
                         </ListItemButton>
                     </div>
