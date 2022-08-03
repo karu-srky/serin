@@ -1,46 +1,24 @@
 import { useState } from "react";
-import { Drawer } from "@mui/material"
+import { Drawer, ListItemButton, ListItemText } from "@mui/material"
 
 import Humburger from "../parts/hamburger";
 import DrawerContents from "../parts/drawerContents";
 
-const Header = () => {
+const Header = (props: any) => {
 
-    const [state, setState] = useState(false);
+    const [drawerState, setDrawerState] = useState(false);
 
-    //引数をopen,closeのstringに変更する
+    //ToDo 引数をopen,closeのstringに変更する
+    //Drawerのstate管理
     const toggleDrawer = (toggleState: boolean) => {
-        setState(toggleState)
+        setDrawerState(toggleState)
     }
 
-    //データをまとめたjsonファイルを作成する
-    const contentsTitle = [
-        {    
-            "title": "TOP",
-            "key": "top"
-        },
-        {
-            "title": "COMPANY",
-            "key": "company"
-        },
-        {
-            "title": "BUSINESS",
-            "key": "business"
-        },
-        {
-            "title": "CONTACT",
-            "key": "contact"
-        },
-        {
-            "title": "RECRUIT",
-            "key": "recruit"
-        }
-    ]
-
-    const listItems = contentsTitle.map((content) =>
+    const listItems = props.contentsTitle.map((content:any) =>
         <DrawerContents
             title={content.title}
-            key={content.key}
+            flag={content.flag}
+            selectBody={props.selectBody}
         />
     )
 
@@ -51,10 +29,15 @@ const Header = () => {
                 <Humburger onClick={() => toggleDrawer(true)}/>
                 <Drawer
                     anchor={'right'}
-                    open={state}
+                    open={drawerState}
                     onClose={() => toggleDrawer(false)}
                 >
                     {listItems}
+                    <div style={styles.listItem}>
+                        <ListItemButton component="a" href="">
+                            <ListItemText primary="GIT" />
+                        </ListItemButton>
+                    </div>
                 </Drawer>
             </div>
         </>
@@ -68,6 +51,10 @@ const styles = {
     },
     headerTitle: {
         fontSize: "40px"
+    },
+    listItem: {
+        marginTop: "10px",
+        backgroundColor: "#fff"
     }
 }
 
