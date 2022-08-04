@@ -28,7 +28,6 @@ const Body = (props: any) => {
             <div style={styles.body}>
                 {displayBody(props.bodyState)}
             </div>
-            
         </>
     )
 }

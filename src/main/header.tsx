@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Drawer, ListItemButton, ListItemText } from "@mui/material"
+import { Drawer, ListItemButton, ListItemText, Avatar } from "@mui/material"
 
 import Humburger from "../parts/hamburger";
 import DrawerContents from "../parts/drawerContents";
 
 const Header = (props: any) => {
 
-    const [drawerState, setDrawerState] = useState(false);
+    const [drawerState, setDrawerState] = useState(false)
 
     //ToDo 引数をopen,closeのstringに変更する
     //Drawerのstate管理
@@ -26,6 +26,13 @@ const Header = (props: any) => {
     return(
         <>
             <div style={styles.header}>
+                <button style={styles.logoButton} onClick={() => props.selectBody("top")}>
+                    <img
+                        style={styles.logo}
+                        src={require("../picture/SeRin_logo.png")} 
+                        alt="picture"
+                    />
+                </button>
                 <div style={styles.headerTitle}>SeRin</div>
                 <Humburger onClick={() => toggleDrawer(true)}/>
                 <Drawer
@@ -56,6 +63,12 @@ const styles = {
     listItem: {
         marginTop: "10px",
         backgroundColor: "#fff"
+    },
+    logoButton: {
+        border: "none"
+    },
+    logo: {
+        height: "100px"
     }
 }
 
