@@ -42,6 +42,7 @@ const App = () => {
         contentsTitle={contentsTitle}
       />
       <Body
+        selectBody={selectBody}
         bodyState={bodyState}
       />
       <Footer />

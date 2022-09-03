@@ -5,24 +5,25 @@ import Business from "../contents/business";
 import Contact from "../contents/contact";
 import Recruit from "../contents/recruit";
 
-const displayBody = (key: string) => {
-    switch(key){
-        case "top":
-            return <Top />
-        case "company":
-            return <Company />
-        case "business":
-            return <Business />
-        case "contact":
-            return <Contact />
-        case "recruit":
-            return <Recruit />
-        default:
-            return <Top />
-    }
-}
-
 const Body = (props: any) => {
+
+    const displayBody = (key: string) => {
+        switch(key){
+            case "top":
+                return <Top selectBody={props.selectBody}/>
+            case "company":
+                return <Company />
+            case "business":
+                return <Business />
+            case "contact":
+                return <Contact />
+            case "recruit":
+                return <Recruit />
+            default:
+                return <Top selectBody={props.selectBody}/>
+        }
+    }
+
     return(
         <>
             <div style={styles.body}>
